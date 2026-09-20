@@ -1,0 +1,13 @@
+{
+  "name": "signai",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/serve.mjs src",
+    "bot": "node scripts/bot.mjs",
+    "setup:bot": "node scripts/setup-bot.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs dist",
+    "start": "npm run dev"
+  }
+}
