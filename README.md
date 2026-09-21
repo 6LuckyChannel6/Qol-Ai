@@ -60,3 +60,6 @@ npm run bot
 ```
 
 Для постоянной работы держите процесс бота запущенным на сервере. Токен не должен попадать в Git или клиентский JavaScript.
+# Qol AI
+
+The website is deployed with GitHub Pages. The Telegram bot can run as a Cloudflare Worker using `wrangler.toml` and `scripts/worker.mjs`.

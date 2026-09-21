@@ -1,0 +1,10 @@
+name = "qol-ai-bot"
+main = "scripts/worker.mjs"
+compatibility_date = "2026-09-21"
+
+[vars]
+WEB_APP_URL = "https://6luckychannel6.github.io/Qol-Ai/"
+
+[[kv_namespaces]]
+binding = "LANGUAGE_PREFS"
+id = "368de8bee5b74e3d93fb063360bdc52a"
