@@ -91,6 +91,7 @@ export default {
       const workerBase = `${url.protocol}//${url.host}`;
       const webhook = await telegram(env, 'setWebhook', {
         url: `${workerBase}/telegram`,
+        ip_address: env.WEBHOOK_IP,
         secret_token: env.WEBHOOK_SECRET,
         allowed_updates: ['message', 'callback_query'],
         drop_pending_updates: false

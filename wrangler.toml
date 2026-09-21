@@ -4,6 +4,7 @@ compatibility_date = "2026-09-21"
 
 [vars]
 WEB_APP_URL = "https://6luckychannel6.github.io/Qol-Ai/"
+WEBHOOK_IP = "172.67.222.122"
 
 [[kv_namespaces]]
 binding = "LANGUAGE_PREFS"
