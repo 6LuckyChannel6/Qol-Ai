@@ -86,6 +86,24 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     if (request.method === 'GET' && url.pathname === '/health') return Response.json({ ok: true, service: 'qol-ai-bot' });
+    if (request.method === 'POST' && url.pathname === '/setup') {
+      if (!env.SETUP_KEY || request.headers.get('Authorization') !== `Bearer ${env.SETUP_KEY}`) return new Response('Unauthorized', { status: 401 });
+      const workerBase = `${url.protocol}//${url.host}`;
+      const webhook = await telegram(env, 'setWebhook', {
+        url: `${workerBase}/telegram`,
+        secret_token: env.WEBHOOK_SECRET,
+        allowed_updates: ['message', 'callback_query'],
+        drop_pending_updates: false
+      });
+      await telegram(env, 'setMyCommands', { commands: [
+        { command: 'start', description: 'Qol AI іске қосу' },
+        { command: 'menu', description: 'Негізгі мәзір' },
+        { command: 'app', description: 'Qol AI ашу' },
+        { command: 'language', description: 'Тілді өзгерту' },
+        { command: 'help', description: 'Көмек' }
+      ] });
+      return Response.json({ ok: Boolean(webhook) });
+    }
     if (request.method !== 'POST' || url.pathname !== '/telegram') return new Response('Not found', { status: 404 });
     if (!env.WEBHOOK_SECRET || request.headers.get('X-Telegram-Bot-Api-Secret-Token') !== env.WEBHOOK_SECRET) return new Response('Unauthorized', { status: 401 });
     const update = await request.json();
