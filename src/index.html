@@ -14,6 +14,7 @@
 <body>
   <div class="noise"></div>
   <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"><i></i></div>
   <header class="nav-wrap">
     <nav class="nav container" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="Qol AI home">
@@ -68,7 +69,7 @@
       </div>
     </section>
 
-    <section class="marquee" aria-label="Features"><div class="marquee-track"><span>ТЕКСТ → ЖЕСТЫ</span><b>✦</b><span>TEXT → SIGN</span><b>✦</b><span>МӘТІН → ЫМ</span><b>✦</b><span>БЕЗ БАРЬЕРОВ</span><b>✦</b><span>ТЕКСТ → ЖЕСТЫ</span><b>✦</b><span>TEXT → SIGN</span><b>✦</b><span>МӘТІН → ЫМ</span><b>✦</b></div></section>
+    <section class="marquee" aria-label="Features"><div class="marquee-track"><div class="marquee-set"><span>ТЕКСТ → ЖЕСТЫ</span><b>✦</b><span>TEXT → SIGN</span><b>✦</b><span>МӘТІН → ЫМ</span><b>✦</b><span>БЕЗ БАРЬЕРОВ</span><b>✦</b></div><div class="marquee-set" aria-hidden="true"><span>ТЕКСТ → ЖЕСТЫ</span><b>✦</b><span>TEXT → SIGN</span><b>✦</b><span>МӘТІН → ЫМ</span><b>✦</b><span>БЕЗ БАРЬЕРОВ</span><b>✦</b></div></div></section>
 
     <section class="showcase-section" id="showcase">
       <div class="container showcase-grid">
@@ -90,6 +91,21 @@
       </div>
     </section>
 
+    <section class="impact-proof" id="impact-proof">
+      <div class="container impact-proof-grid">
+        <div class="impact-proof-copy reveal">
+          <span class="kicker">04 / ҚОҒАМҒА ӘСЕРІ</span>
+          <h2>Ақпаратты түсіну әр адамға қолжетімді болуы керек</h2>
+          <p>Қазақстанда есту қабілеті бұзылған шамамен <strong>37 000 адам</strong> бар деген 2025 жылғы мәлімет айтылды. Qol AI осы адамдарға оқу, қызмет және күнделікті ақпаратты ым тіліндегі бейне арқылы қабылдауға қосымша мүмкіндік беруді көздейді.</p>
+          <p class="impact-proof-note">Бұл сан ым тілін қолданатын адамдардың дәл саны емес. Жобаның сапасын ым тілін қолданатын адамдармен бірге тексереміз.<br><span>Дереккөз: Kazinform, 20 қазан 2025</span></p>
+        </div>
+        <div class="impact-proof-number reveal delay-1" data-tilt>
+          <span>ҚАЗАҚСТАН</span><strong>37 000<sup>+</sup></strong><em>есту қабілеті бұзылған адам</em>
+          <div class="number-orbit" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="studio-section" id="studio">
       <div class="container">
         <div class="section-heading reveal"><span class="kicker">01 / STUDIO</span><h2 data-i18n="studioTitle">Создайте своё видео</h2><p data-i18n="studioText">Введите текст — остальное сделает искусственный интеллект.</p></div>
@@ -104,7 +120,7 @@
           <div class="preview-panel" id="previewPanel">
             <div class="preview-empty" id="previewEmpty"><span class="hand-icon"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="4"/><path d="m10 8 6 4-6 4Z"/></svg></span><h3 data-i18n="previewTitle">Ваше видео появится здесь</h3><p data-i18n="previewText">Введите текст и нажмите «Создать видео»</p></div>
             <div class="generating" id="generating"><div class="scan-avatar"><div class="scan-line"></div><span><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="4"/><path d="m10 8 6 4-6 4Z"/></svg></span></div><strong data-i18n="processing">ИИ переводит текст в жесты…</strong><div class="progress"><i></i></div><small id="progressText">0%</small></div>
-            <div class="result" id="result"><div class="result-stage"><video id="resultVideo" src="assets/video.mp4" playsinline controls preload="metadata"></video><div class="result-caption" id="resultCaption"></div></div><div class="result-actions"><button id="replayBtn">↻ <span data-i18n="replay">Повторить</span></button><a class="download-btn" id="downloadBtn" href="assets/video.mp4" download="qol-ai-sabak-kestesi.mp4">↓ <span data-i18n="download">Скачать MP4</span></a></div></div>
+            <div class="result" id="result"><div class="result-stage"><video id="resultVideo" src="assets/456.mp4" playsinline controls preload="metadata"></video><div class="result-caption" id="resultCaption"></div></div><div class="result-actions"><button id="replayBtn">↻ <span data-i18n="replay">Повторить</span></button><a class="download-btn" id="downloadBtn" href="assets/456.mp4" download="qol-ai-sabak-kestesi.mp4">↓ <span data-i18n="download">Скачать MP4</span></a></div></div>
           </div>
         </div>
       </div>

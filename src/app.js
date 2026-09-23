@@ -1,6 +1,6 @@
 const DEMO_PHRASE = 'Сабақ кестесін қайдан көре аламын?';
 const VIDEO_LIBRARY = [
-  { phrase: DEMO_PHRASE, src: 'assets/video.mp4', filename: 'qol-ai-sabak-kestesi.mp4' },
+  { phrase: DEMO_PHRASE, src: 'assets/456.mp4', filename: 'qol-ai-sabak-kestesi.mp4' },
   { phrase: 'Менің шәкіртақым неге түспеді?', src: 'assets/22.mov', filename: 'qol-ai-shakirtaky.mov' },
   { phrase: 'Жеке куәлігімді жоғалтып алдым, не істеуім керек?', src: 'assets/33.mp4', filename: 'qol-ai-zheke-kualik.mp4' },
   { phrase: 'Подскажите, когда начинаются экзамены?', src: 'assets/44.mp4', filename: 'qol-ai-ekzameny.mp4' },
@@ -63,8 +63,22 @@ heroVideo.addEventListener('timeupdate',()=>{if(heroVideo.duration){$('.track i'
 $('#themeToggle').addEventListener('click',()=>{html.dataset.theme=html.dataset.theme==='dark'?'light':'dark';localStorage.setItem('qolai-theme',html.dataset.theme)});
 
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.14});$$('.reveal').forEach(el=>observer.observe(el));
-addEventListener('scroll',()=>$('.nav-wrap').classList.toggle('scrolled',scrollY>25),{passive:true});
+addEventListener('scroll',()=>{
+  $('.nav-wrap').classList.toggle('scrolled',scrollY>25);
+  const progress=$('#scrollProgress i');
+  if(progress){const max=document.documentElement.scrollHeight-innerHeight;progress.style.transform=`scaleX(${max>0?scrollY/max:0})`}
+},{passive:true});
 addEventListener('pointermove',e=>{const glow=$('.cursor-glow');glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
+
+// A small amount of pointer depth gives the interface a cinematic, WebGL-like response
+// while keeping all content editable and accessible on touch devices.
+if(matchMedia('(pointer:fine)').matches){
+  const visual=$('.hero-visual'); const card=$('.avatar-card');
+  visual?.addEventListener('pointermove',e=>{const r=visual.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;card.style.transform=`rotate(${x*3+0.6}deg) rotateX(${y*-3}deg) rotateY(${x*4}deg) translate(${x*5}px,${y*5}px)`});
+  visual?.addEventListener('pointerleave',()=>{card.style.transform='rotate(.6deg)'});
+  $$('.impact-proof-number').forEach(el=>el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(900px) rotateX(${y*-4}deg) rotateY(${x*5}deg) translateY(-4px)`}));
+  $$('.impact-proof-number').forEach(el=>el.addEventListener('pointerleave',()=>{el.style.transform=''}));
+}
 
 const input=$('#textInput');
 input.addEventListener('input',()=>$('#charCount').textContent=input.value.length);
